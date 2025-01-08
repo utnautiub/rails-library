@@ -1,4 +1,6 @@
-class Api::V1::BooksController < ApplicationController
+class Api::V1::BooksController < Api::V1::BaseController
+  before_action :authorize_user, only: [ :index, :show ]
+  before_action :authorize_admin, only: [ :create, :update, :destroy ]
   def index
     @books = Book.where(delete_flag: false)
     render json: @books
@@ -29,7 +31,12 @@ class Api::V1::BooksController < ApplicationController
 
   def destroy
     @book = Book.find(params[:id])
-    @book.update(delete_flag: true) # Soft-delete
+
+    if @book
+      @book.update(delete_flag: true)
+    else
+      render json: @book.errors, status: 422
+    end
     head :no_content
   end
 

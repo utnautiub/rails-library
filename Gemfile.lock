@@ -111,6 +111,8 @@ GEM
       actionview (>= 5.0.0)
       activesupport (>= 5.0.0)
     json (2.9.1)
+    jwt (2.10.1)
+      base64
     kamal (2.4.0)
       activesupport (>= 7.0)
       base64 (~> 0.2)
@@ -292,6 +294,7 @@ DEPENDENCIES
   brakeman
   debug
   jbuilder
+  jwt
   kamal
   pg (~> 1.1)
   puma (>= 5.0)

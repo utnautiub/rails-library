@@ -5,5 +5,5 @@ class User < ApplicationRecord
   # Validate
   validates :name, presence: true
   validates :user_name, presence: true, uniqueness: { case_sensitive: false }
-  validates :password, presence: true
+  validates :password, presence: true, confirmation: true
 end
